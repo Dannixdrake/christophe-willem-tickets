@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Event Ticket Demo</title>
+<title>Live Events | Tickets</title>
 
 <style>
 * {
@@ -12,83 +12,189 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b0b0f;
-  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #09090d;
+  color: #fff;
 }
 
 header {
-  padding: 22px;
-  text-align: center;
-  background: #15151c;
-  border-bottom: 1px solid #292934;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(9,9,13,.95);
+  border-bottom: 1px solid #25252d;
+  padding: 18px 6%;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 26px;
+.nav {
+  max-width: 1150px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: 800;
+}
+
+nav a {
+  color: #bbb;
+  text-decoration: none;
+  margin-left: 22px;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+.hero {
+  text-align: center;
+  padding: 75px 20px 55px;
+  background:
+    radial-gradient(circle at center, #272733 0, #09090d 65%);
+}
+
+.hero h1 {
+  font-size: clamp(38px, 7vw, 70px);
+  margin: 0 0 15px;
+}
+
+.hero p {
+  color: #aaa;
+  max-width: 600px;
+  margin: auto;
+  line-height: 1.6;
 }
 
 .container {
   width: 92%;
-  max-width: 1000px;
-  margin: 30px auto;
+  max-width: 1100px;
+  margin: 45px auto;
 }
 
-.event {
-  background: #16161e;
-  border: 1px solid #292934;
-  border-radius: 14px;
-  padding: 20px;
-  margin-bottom: 15px;
+.section-title {
+  margin-bottom: 22px;
 }
 
-.event h2 {
-  margin-top: 0;
+.events {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 18px;
+}
+
+.event-card {
+  background: #14141b;
+  border: 1px solid #292932;
+  border-radius: 16px;
+  padding: 23px;
+  transition: .2s;
+}
+
+.event-card:hover {
+  transform: translateY(-3px);
+  border-color: #444450;
+}
+
+.event-card h3 {
+  margin: 0 0 10px;
+  font-size: 21px;
+}
+
+.event-info {
+  color: #aaa;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.price {
+  font-size: 23px;
+  font-weight: bold;
+  margin: 18px 0;
 }
 
 button {
-  border: 0;
-  border-radius: 8px;
-  padding: 12px 18px;
   cursor: pointer;
-  font-weight: bold;
+  border: 0;
+  border-radius: 9px;
+  padding: 13px 18px;
+  font-weight: 700;
 }
 
 .buy {
-  background: white;
-  color: black;
+  width: 100%;
+  background: #fff;
+  color: #000;
+}
+
+.buy:hover {
+  background: #ddd;
 }
 
 .checkout {
   display: none;
-  margin-top: 35px;
-  padding: 25px;
-  background: #16161e;
-  border: 1px solid #292934;
-  border-radius: 14px;
+  background: #14141b;
+  border: 1px solid #292932;
+  border-radius: 16px;
+  padding: 28px;
+  margin-top: 45px;
+}
+
+.selected {
+  background: #0e0e14;
+  border-radius: 10px;
+  padding: 17px;
+  margin-bottom: 22px;
+  line-height: 1.7;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 7px;
+  color: #ccc;
 }
 
 input {
   width: 100%;
-  padding: 13px;
-  margin: 8px 0 15px;
-  border-radius: 8px;
-  border: 1px solid #383844;
-  background: #0d0d12;
-  color: white;
+  padding: 14px;
+  background: #0c0c11;
+  border: 1px solid #353540;
+  color: #fff;
+  border-radius: 9px;
+  outline: none;
 }
 
-.voucher-box {
+input:focus {
+  border-color: #777;
+}
+
+.voucher {
   margin-top: 25px;
-  padding: 18px;
+  padding: 20px;
+  background: #0e0e14;
   border-radius: 12px;
-  background: #101017;
+}
+
+.voucher h3 {
+  margin-top: 0;
+}
+
+.voucher-row {
+  display: flex;
+  gap: 10px;
+}
+
+.voucher-row input {
+  flex: 1;
 }
 
 .apply {
-  background: white;
-  color: black;
+  background: #fff;
+  color: #000;
+  white-space: nowrap;
 }
 
 .message {
@@ -97,84 +203,125 @@ input {
 }
 
 .total {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
-  margin: 20px 0;
+  margin: 25px 0;
 }
 
 .payment {
-  background: white;
-  color: black;
   width: 100%;
+  background: #fff;
+  color: #000;
 }
+
+footer {
+  text-align: center;
+  padding: 45px 20px;
+  color: #777;
+  border-top: 1px solid #22222a;
+  margin-top: 60px;
+}
+
+/* ADMIN */
 
 .admin-button {
   display: block;
-  margin: 40px auto;
-  background: #292934;
-  color: white;
+  margin: 35px auto;
+  background: #202027;
+  color: #aaa;
+  border: 1px solid #34343e;
 }
 
-#adminPanel {
+.admin-panel {
   display: none;
-  background: #111118;
-  border-top: 1px solid #33333f;
-  padding: 25px 0;
+  border-top: 1px solid #292932;
+  padding: 45px 0;
+  background: #0d0d12;
 }
 
 .stats {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 25px 0;
 }
 
 .stat {
-  background: #1b1b24;
-  padding: 15px;
-  border-radius: 10px;
-  flex: 1;
-  min-width: 150px;
+  background: #17171e;
+  border: 1px solid #292932;
+  border-radius: 12px;
+  padding: 20px;
 }
 
-.table-wrap {
+.stat strong {
+  display: block;
+  color: #999;
+  margin-bottom: 8px;
+}
+
+.stat span {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.search {
+  margin-bottom: 20px;
+}
+
+.table-container {
   overflow-x: auto;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 650px;
+  min-width: 700px;
 }
 
-th, td {
-  padding: 10px;
-  border-bottom: 1px solid #292934;
+th,
+td {
   text-align: left;
+  padding: 13px;
+  border-bottom: 1px solid #292932;
 }
 
 th {
-  background: #1c1c25;
+  background: #191920;
 }
 
-.used {
+.status-used {
   color: #ff7777;
   font-weight: bold;
 }
 
-.unused {
-  color: #79e89a;
+.status-unused {
+  color: #72e39a;
   font-weight: bold;
 }
 
-.search {
-  margin-bottom: 15px;
+.reset {
+  margin-top: 20px;
+  background: #302020;
+  color: #ffaaaa;
 }
 
-.reset {
-  background: #3a2020;
-  color: white;
-  margin-top: 15px;
+@media (max-width: 600px) {
+
+  nav {
+    display: none;
+  }
+
+  .voucher-row {
+    flex-direction: column;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout {
+    padding: 20px;
+  }
 }
 </style>
 </head>
@@ -182,119 +329,166 @@ th {
 <body>
 
 <header>
-  <h1>Event Tickets — Demo</h1>
+  <div class="nav">
+    <div class="logo">Live Events</div>
+
+    <nav>
+      <a href="#events">Events</a>
+      <a href="#checkout">Tickets</a>
+    </nav>
+  </div>
 </header>
 
-<div class="container">
+<section class="hero">
+  <h1>Live Events</h1>
+  <p>
+    Discover upcoming live performances and reserve your tickets securely.
+  </p>
+</section>
 
-  <div class="event">
-    <h2>Forges-les-Eaux</h2>
-    <p>27 February 2027 · L’Espace de Forges</p>
-    <p>Ticket: €60</p>
-    <button class="buy"
-      onclick="selectTicket('Forges-les-Eaux','27 February 2027','L’Espace de Forges',60,'forges')">
-      Buy Ticket
-    </button>
-  </div>
+<div class="container" id="events">
 
-  <div class="event">
-    <h2>Boulogne-sur-Mer</h2>
-    <p>4 March 2027 · L’Embarcadère</p>
-    <p>Ticket: €60</p>
-    <button class="buy"
-      onclick="selectTicket('Boulogne-sur-Mer','4 March 2027','L’Embarcadère',60,'boulogne')">
-      Buy Ticket
-    </button>
-  </div>
+  <h2 class="section-title">Upcoming Events</h2>
 
-  <div class="event">
-    <h2>Biarritz</h2>
-    <p>7 April 2027 · Gare du Midi</p>
-    <p>Ticket: €50</p>
-    <button class="buy"
-      onclick="selectTicket('Biarritz','7 April 2027','Gare du Midi',50,'biarritz')">
-      Buy Ticket
-    </button>
-  </div>
+  <div class="events">
 
-  <div class="event">
-    <h2>Chasseneuil-du-Poitou</h2>
-    <p>20 May 2027 · Palais des Congrès du Futuroscope</p>
-    <p>Ticket: €50</p>
-    <button class="buy"
-      onclick="selectTicket('Chasseneuil-du-Poitou','20 May 2027','Palais des Congrès du Futuroscope',50,'chasseneuil')">
-      Buy Ticket
-    </button>
-  </div>
-
-  <div class="event">
-    <h2>Le Grand-Quevilly / Rouen</h2>
-    <p>22 October 2027 · Zénith</p>
-    <p>Ticket: €70</p>
-    <button class="buy"
-      onclick="selectTicket('Le Grand-Quevilly / Rouen','22 October 2027','Zénith',70,'rouen')">
-      Buy Ticket
-    </button>
-  </div>
-
-  <div class="event">
-    <h2>Nantes / Saint-Herblain</h2>
-    <p>25 November 2027 · Zénith Nantes Métropole</p>
-    <p>Ticket: €70</p>
-    <button class="buy"
-      onclick="selectTicket('Nantes / Saint-Herblain','25 November 2027','Zénith Nantes Métropole',70,'nantes')">
-      Buy Ticket
-    </button>
-  </div>
-
-  <div class="event">
-    <h2>Orléans</h2>
-    <p>27 November 2027 · Zénith d’Orléans</p>
-    <p>Ticket: €70</p>
-    <button class="buy"
-      onclick="selectTicket('Orléans','27 November 2027','Zénith d’Orléans',70,'orleans')">
-      Buy Ticket
-    </button>
-  </div>
-
-  <div class="event">
-    <h2>Paris</h2>
-    <p>9 December 2027 · Accor Arena</p>
-    <p>Ticket: €50</p>
-    <button class="buy"
-      onclick="selectTicket('Paris','9 December 2027','Accor Arena',50,'paris')">
-      Buy Ticket
-    </button>
-  </div>
-
-
-  <!-- CUSTOMER CHECKOUT -->
-
-  <div class="checkout" id="checkout">
-
-    <h2>Checkout</h2>
-
-    <div id="selectedTicket"></div>
-
-    <label>Your name</label>
-    <input id="customerName" type="text" placeholder="Enter your name">
-
-    <label>Your email</label>
-    <input id="customerEmail" type="email" placeholder="Enter your email">
-
-    <div class="voucher-box">
-
-      <h3>Event Gift Voucher</h3>
-
-      <input
-        id="voucherCode"
-        type="text"
-        placeholder="Enter voucher code"
-      >
-
-      <button class="apply" onclick="applyVoucher()">
-        Apply Voucher
+    <div class="event-card">
+      <h3>Forges-les-Eaux</h3>
+      <div class="event-info">
+        27 February 2027<br>
+        L'Espace de Forges
+      </div>
+      <div class="price">€60</div>
+      <button class="buy"
+        onclick="selectEvent('Forges-les-Eaux','27 February 2027','L’Espace de Forges',60,'forges')">
+        Buy Ticket
       </button>
+    </div>
+
+    <div class="event-card">
+      <h3>Boulogne-sur-Mer</h3>
+      <div class="event-info">
+        4 March 2027<br>
+        L'Embarcadère
+      </div>
+      <div class="price">€60</div>
+      <button class="buy"
+        onclick="selectEvent('Boulogne-sur-Mer','4 March 2027','L’Embarcadère',60,'boulogne')">
+        Buy Ticket
+      </button>
+    </div>
+
+    <div class="event-card">
+      <h3>Biarritz</h3>
+      <div class="event-info">
+        7 April 2027<br>
+        Gare du Midi
+      </div>
+      <div class="price">€50</div>
+      <button class="buy"
+        onclick="selectEvent('Biarritz','7 April 2027','Gare du Midi',50,'biarritz')">
+        Buy Ticket
+      </button>
+    </div>
+
+    <div class="event-card">
+      <h3>Chasseneuil-du-Poitou</h3>
+      <div class="event-info">
+        20 May 2027<br>
+        Palais des Congrès
+      </div>
+      <div class="price">€50</div>
+      <button class="buy"
+        onclick="selectEvent('Chasseneuil-du-Poitou','20 May 2027','Palais des Congrès',50,'chasseneuil')">
+        Buy Ticket
+      </button>
+    </div>
+
+    <div class="event-card">
+      <h3>Le Grand-Quevilly</h3>
+      <div class="event-info">
+        22 October 2027<br>
+        Zénith
+      </div>
+      <div class="price">€70</div>
+      <button class="buy"
+        onclick="selectEvent('Le Grand-Quevilly','22 October 2027','Zénith',70,'rouen')">
+        Buy Ticket
+      </button>
+    </div>
+
+    <div class="event-card">
+      <h3>Nantes</h3>
+      <div class="event-info">
+        25 November 2027<br>
+        Zénith Nantes Métropole
+      </div>
+      <div class="price">€70</div>
+      <button class="buy"
+        onclick="selectEvent('Nantes','25 November 2027','Zénith Nantes Métropole',70,'nantes')">
+        Buy Ticket
+      </button>
+    </div>
+
+    <div class="event-card">
+      <h3>Orléans</h3>
+      <div class="event-info">
+        27 November 2027<br>
+        Zénith d'Orléans
+      </div>
+      <div class="price">€70</div>
+      <button class="buy"
+        onclick="selectEvent('Orléans','27 November 2027','Zénith d’Orléans',70,'orleans')">
+        Buy Ticket
+      </button>
+    </div>
+
+    <div class="event-card">
+      <h3>Paris</h3>
+      <div class="event-info">
+        9 December 2027<br>
+        Accor Arena
+      </div>
+      <div class="price">€50</div>
+      <button class="buy"
+        onclick="selectEvent('Paris','9 December 2027','Accor Arena',50,'paris')">
+        Buy Ticket
+      </button>
+    </div>
+
+  </div>
+
+
+  <section class="checkout" id="checkout">
+
+    <h2>Complete Your Booking</h2>
+
+    <div class="selected" id="selectedEvent"></div>
+
+    <label>Full Name</label>
+    <input id="customerName" type="text"
+      placeholder="Enter your full name">
+
+    <label>Email Address</label>
+    <input id="customerEmail" type="email"
+      placeholder="Enter your email address">
+
+    <div class="voucher">
+
+      <h3>Gift Voucher</h3>
+
+      <div class="voucher-row">
+
+        <input
+          id="voucherCode"
+          type="text"
+          placeholder="Enter your voucher code">
+
+        <button class="apply" onclick="applyVoucher()">
+          Apply
+        </button>
+
+      </div>
 
       <div class="message" id="voucherMessage"></div>
 
@@ -310,61 +504,56 @@ th {
 
     <div class="message" id="paymentMessage"></div>
 
-  </div>
+  </section>
 
 </div>
 
 
-<!-- ADMIN BUTTON -->
-
 <button class="admin-button" onclick="toggleAdmin()">
-  Admin — Voucher Status
+  Voucher Status
 </button>
 
 
-<!-- ADMIN PANEL -->
-
-<div id="adminPanel">
+<section class="admin-panel" id="adminPanel">
 
   <div class="container">
 
-    <h2>Voucher Status</h2>
+    <h2>Voucher Management</h2>
 
     <div class="stats">
 
       <div class="stat">
-        <strong>Total</strong>
-        <div id="totalVouchers">400</div>
+        <strong>Total Vouchers</strong>
+        <span id="totalCount">400</span>
       </div>
 
       <div class="stat">
         <strong>Used</strong>
-        <div id="usedVouchers">0</div>
+        <span id="usedCount">0</span>
       </div>
 
       <div class="stat">
         <strong>Unused</strong>
-        <div id="unusedVouchers">400</div>
+        <span id="unusedCount">400</span>
       </div>
 
     </div>
 
     <input
       class="search"
-      id="adminSearch"
+      id="searchVoucher"
       type="text"
-      placeholder="Search voucher or concert..."
-      oninput="renderAdminTable()"
-    >
+      placeholder="Search voucher or event..."
+      oninput="renderTable()">
 
-    <div class="table-wrap">
+    <div class="table-container">
 
       <table>
 
         <thead>
           <tr>
-            <th>Voucher</th>
-            <th>Concert</th>
+            <th>Voucher Code</th>
+            <th>Event</th>
             <th>Date</th>
             <th>Discount</th>
             <th>Status</th>
@@ -377,108 +566,59 @@ th {
 
     </div>
 
-    <button class="reset" onclick="resetDemo()">
-      Reset Demo Voucher Status
+    <button class="reset" onclick="resetVouchers()">
+      Reset Voucher Status
     </button>
 
   </div>
 
-</div>
+</section>
+
+
+<footer>
+  © 2027 Live Events. All rights reserved.
+</footer>
 
 
 <script>
 
-/* ==============================
-   EVENT DATA
-============================== */
-
-const concerts = [
-
-  {
-    id: "forges",
-    name: "Forges-les-Eaux",
-    date: "27 February 2027"
-  },
-
-  {
-    id: "boulogne",
-    name: "Boulogne-sur-Mer",
-    date: "4 March 2027"
-  },
-
-  {
-    id: "biarritz",
-    name: "Biarritz",
-    date: "7 April 2027"
-  },
-
-  {
-    id: "chasseneuil",
-    name: "Chasseneuil-du-Poitou",
-    date: "20 May 2027"
-  },
-
-  {
-    id: "rouen",
-    name: "Le Grand-Quevilly / Rouen",
-    date: "22 October 2027"
-  },
-
-  {
-    id: "nantes",
-    name: "Nantes / Saint-Herblain",
-    date: "25 November 2027"
-  },
-
-  {
-    id: "orleans",
-    name: "Orléans",
-    date: "27 November 2027"
-  },
-
-  {
-    id: "paris",
-    name: "Paris",
-    date: "9 December 2027"
-  }
-
+const events = [
+  ["forges","Forges-les-Eaux","27 February 2027"],
+  ["boulogne","Boulogne-sur-Mer","4 March 2027"],
+  ["biarritz","Biarritz","7 April 2027"],
+  ["chasseneuil","Chasseneuil-du-Poitou","20 May 2027"],
+  ["rouen","Le Grand-Quevilly","22 October 2027"],
+  ["nantes","Nantes","25 November 2027"],
+  ["orleans","Orléans","27 November 2027"],
+  ["paris","Paris","9 December 2027"]
 ];
 
-
-/* ==============================
-   CREATE 400 DEMO VOUCHERS
-   50 FOR EACH CONCERT
-============================== */
-
 let vouchers = [];
+let selectedPrice = 0;
+let selectedEventId = "";
+
+
+/* CREATE VOUCHERS */
 
 function createVouchers() {
 
   vouchers = [];
 
-  concerts.forEach(concert => {
+  events.forEach(event => {
 
     for (let i = 1; i <= 50; i++) {
 
-      const number =
-        String(i).padStart(2, "0");
-
       vouchers.push({
-
         code:
-          "DEMO-" +
-          concert.id.toUpperCase() +
+          "VCH-" +
+          event[0].toUpperCase() +
           "-" +
-          number,
+          String(i).padStart(2,"0"),
 
-        concertId: concert.id,
-
-        concert: concert.name,
-
-        date: concert.date,
-
+        eventId: event[0],
+        event: event[1],
+        date: event[2],
         discount: 100
-
       });
 
     }
@@ -488,89 +628,77 @@ function createVouchers() {
 }
 
 
-/* ==============================
-   USED VOUCHERS
-============================== */
+/* STORAGE */
 
-function getUsedVouchers() {
+function getUsed() {
 
   return JSON.parse(
-    localStorage.getItem("demoUsedVouchers") || "[]"
+    localStorage.getItem("usedVouchers") || "[]"
   );
 
 }
 
-
-function saveUsedVouchers(list) {
+function saveUsed(list) {
 
   localStorage.setItem(
-    "demoUsedVouchers",
+    "usedVouchers",
     JSON.stringify(list)
   );
 
 }
 
 
-/* ==============================
-   SELECT TICKET
-============================== */
+/* SELECT EVENT */
 
-let selectedPrice = 0;
-let selectedConcertId = "";
-let selectedConcert = "";
-
-function selectTicket(
-  city,
+function selectEvent(
+  name,
   date,
   venue,
   price,
-  concertId
+  id
 ) {
 
   selectedPrice = price;
-
-  selectedConcertId = concertId;
-
-  selectedConcert =
-    city + " — " + date + " — " + venue;
+  selectedEventId = id;
 
   document.getElementById("checkout").style.display =
     "block";
 
-  document.getElementById("selectedTicket").innerHTML =
-    "<strong>Selected concert:</strong><br>" +
-    selectedConcert +
-    "<br><br><strong>Ticket price:</strong> €" +
+  document.getElementById("selectedEvent").innerHTML =
+    "<strong>Selected event</strong><br>" +
+    name +
+    "<br>" +
+    date +
+    "<br>" +
+    venue +
+    "<br><br>Ticket price: €" +
     price;
 
-  document.getElementById("totalAmount").textContent =
-    "€" + price;
+  document.getElementById("totalAmount")
+    .textContent = "€" + price;
 
-  document.getElementById("voucherMessage").textContent =
-    "";
+  document.getElementById("voucherCode").value = "";
 
-  document.getElementById("paymentMessage").textContent =
-    "";
+  document.getElementById("voucherMessage")
+    .textContent = "";
 
-  document.getElementById("voucherCode").value =
-    "";
+  document.getElementById("paymentMessage")
+    .textContent = "";
 
-  document.getElementById("checkout").scrollIntoView({
-    behavior: "smooth"
-  });
+  document.getElementById("checkout")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
 
 }
 
 
-/* ==============================
-   APPLY VOUCHER
-============================== */
+/* APPLY VOUCHER */
 
 function applyVoucher() {
 
   const code =
-    document
-      .getElementById("voucherCode")
+    document.getElementById("voucherCode")
       .value
       .trim()
       .toUpperCase();
@@ -581,7 +709,7 @@ function applyVoucher() {
   if (!selectedPrice) {
 
     message.textContent =
-      "Please select a concert first.";
+      "Please select an event first.";
 
     return;
 
@@ -596,10 +724,8 @@ function applyVoucher() {
 
   }
 
-
   const voucher =
     vouchers.find(v => v.code === code);
-
 
   if (!voucher) {
 
@@ -610,20 +736,16 @@ function applyVoucher() {
 
   }
 
-
-  if (voucher.concertId !== selectedConcertId) {
+  if (voucher.eventId !== selectedEventId) {
 
     message.textContent =
-      "This voucher is for a different concert.";
+      "This voucher is associated with another event.";
 
     return;
 
   }
 
-
-  const used =
-    getUsedVouchers();
-
+  const used = getUsed();
 
   if (used.includes(code)) {
 
@@ -634,60 +756,34 @@ function applyVoucher() {
 
   }
 
+  used.push(code);
+  saveUsed(used);
 
-  /* 100% DEMO DISCOUNT */
-
-  document.getElementById("totalAmount").textContent =
-    "€0";
-
+  document.getElementById("totalAmount")
+    .textContent = "€0";
 
   message.textContent =
-    "Voucher accepted. 100% discount applied.";
+    "Voucher accepted. Discount applied.";
 
-
-  /* MARK AS USED */
-
-  used.push(code);
-
-  saveUsedVouchers(used);
-
-
-  renderAdminTable();
+  renderTable();
 
 }
 
 
-/* ==============================
-   PAYMENT BUTTON
-============================== */
+/* PAYMENT */
 
 function continuePayment() {
 
   const name =
-    document
-      .getElementById("customerName")
-      .value
-      .trim();
+    document.getElementById("customerName")
+      .value.trim();
 
   const email =
-    document
-      .getElementById("customerEmail")
-      .value
-      .trim();
+    document.getElementById("customerEmail")
+      .value.trim();
 
   const message =
     document.getElementById("paymentMessage");
-
-
-  if (!selectedPrice) {
-
-    message.textContent =
-      "Please select a concert first.";
-
-    return;
-
-  }
-
 
   if (!name) {
 
@@ -698,7 +794,6 @@ function continuePayment() {
 
   }
 
-
   if (!email) {
 
     message.textContent =
@@ -708,36 +803,27 @@ function continuePayment() {
 
   }
 
-
-  const total =
-    document.getElementById("totalAmount").textContent;
-
-
   message.textContent =
-    "Demo checkout complete. Amount to pay: " +
-    total;
+    "Your booking information has been received.";
 
 }
 
 
-/* ==============================
-   ADMIN PANEL
-============================== */
+/* ADMIN */
 
 function toggleAdmin() {
 
   const panel =
     document.getElementById("adminPanel");
 
+  panel.style.display =
+    panel.style.display === "block"
+      ? "none"
+      : "block";
+
   if (panel.style.display === "block") {
 
-    panel.style.display = "none";
-
-  } else {
-
-    panel.style.display = "block";
-
-    renderAdminTable();
+    renderTable();
 
     panel.scrollIntoView({
       behavior: "smooth"
@@ -748,29 +834,21 @@ function toggleAdmin() {
 }
 
 
-/* ==============================
-   ADMIN TABLE
-============================== */
+/* TABLE */
 
-function renderAdminTable() {
+function renderTable() {
 
-  const tbody =
+  const table =
     document.getElementById("voucherTable");
 
   const search =
-    document
-      .getElementById("adminSearch")
+    document.getElementById("searchVoucher")
       .value
-      .trim()
       .toUpperCase();
 
-
-  const used =
-    getUsedVouchers();
-
+  const used = getUsed();
 
   let html = "";
-
 
   vouchers.forEach(voucher => {
 
@@ -779,113 +857,76 @@ function renderAdminTable() {
         ? "USED"
         : "UNUSED";
 
-
     const searchable =
       (
         voucher.code +
-        " " +
-        voucher.concert +
-        " " +
+        voucher.event +
         voucher.date
       ).toUpperCase();
-
 
     if (
       search &&
       !searchable.includes(search)
-    ) {
-      return;
-    }
-
+    ) return;
 
     html += `
       <tr>
-
         <td>${voucher.code}</td>
-
-        <td>${voucher.concert}</td>
-
+        <td>${voucher.event}</td>
         <td>${voucher.date}</td>
-
         <td>100%</td>
-
         <td class="${
           status === "USED"
-            ? "used"
-            : "unused"
+            ? "status-used"
+            : "status-unused"
         }">
-
           ${status}
-
         </td>
-
       </tr>
     `;
 
   });
 
+  table.innerHTML = html;
 
-  tbody.innerHTML = html;
-
-
-  const usedCount =
-    used.length;
-
-
-  document.getElementById("totalVouchers")
+  document.getElementById("totalCount")
     .textContent = vouchers.length;
 
+  document.getElementById("usedCount")
+    .textContent = used.length;
 
-  document.getElementById("usedVouchers")
-    .textContent = usedCount;
-
-
-  document.getElementById("unusedVouchers")
+  document.getElementById("unusedCount")
     .textContent =
-      vouchers.length - usedCount;
+      vouchers.length - used.length;
 
 }
 
 
-/* ==============================
-   RESET DEMO
-============================== */
+/* RESET */
 
-function resetDemo() {
+function resetVouchers() {
 
-  const confirmReset =
-    confirm(
+  if (
+    !confirm(
       "Reset all voucher statuses?"
-    );
-
-
-  if (!confirmReset) return;
-
+    )
+  ) return;
 
   localStorage.removeItem(
-    "demoUsedVouchers"
+    "usedVouchers"
   );
 
-
-  renderAdminTable();
-
-
-  document.getElementById("voucherMessage")
-    .textContent =
-      "Demo voucher statuses have been reset.";
+  renderTable();
 
 }
 
 
-/* ==============================
-   START
-============================== */
+/* START */
 
 createVouchers();
-
-renderAdminTable();
+renderTable();
 
 </script>
 
 </body>
-      </html>   
+  </html>
