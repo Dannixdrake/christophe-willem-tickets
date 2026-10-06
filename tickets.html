@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christophe Willem Tickets</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0b0f;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #111118;
+      padding: 18px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #292934;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      opacity: 0.7;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 75px 20px;
+      background: linear-gradient(180deg, #171721, #0b0b0f);
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: #bdbdc8;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 45px auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 30px;
+    }
+
+    .events {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .event {
+      background: #15151d;
+      border: 1px solid #292934;
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .event h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .event p {
+      color: #bdbdc8;
+      margin: 7px 0;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      padding: 13px;
+      border-radius: 8px;
+      background: #ffffff;
+      color: #000000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+
+    #checkout {
+      display: none;
+      margin-top: 50px;
+      background: #15151d;
+      border: 1px solid #292934;
+      border-radius: 14px;
+      padding: 25px;
+    }
+
+    #selectedTicket {
+      margin-bottom: 20px;
+      color: #cfcfd8;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      margin: 8px 0 15px;
+      border-radius: 7px;
+      border: 1px solid #383842;
+      background: #0d0d12;
+      color: #ffffff;
+      outline: none;
+    }
+
+    label {
+      font-size: 14px;
+      color: #cfcfd8;
+    }
+
+    .voucher-box {
+      margin-top: 20px;
+      padding: 18px;
+      background: #101017;
+      border-radius: 10px;
+    }
+
+    .total {
+      margin: 20px 0;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .message {
+      margin: 10px 0;
+      color: #cfcfd8;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 30px;
+      text-align: center;
+      border-top: 1px solid #292934;
+      color: #888894;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      nav a {
+        margin-left: 8px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Christophe Willem Tickets</div>
+
+  <nav>
+    <a href="#concerts">Concerts</a>
+    <a href="#checkout">Checkout</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Christophe Willem</h1>
+  <p>
+    Discover upcoming concerts and reserve your tickets.
+    Select your concert below to continue.
+  </p>
+</section>
+
+<section class="container" id="concerts">
+
+  <h2 class="section-title">Upcoming Concerts</h2>
+
+  <div class="events">
+
+    <div class="event">
+      <h3>Forges-les-Eaux</h3>
+      <p>📅 27 February 2027</p>
+      <p>L’Espace de Forges</p>
+      <div class="price">€60</div>
+      <button onclick="selectTicket('Forges-les-Eaux', '27 February 2027', 'L’Espace de Forges', 60)">
+        Buy Ticket
+      </button>
+    </div>
+
+    <div class="event">
+      <h3>Boulogne-sur-Mer</h3>
+      <p>📅 4 March 2027</p>
+      <p>L’Embarcadère</p>
+      <div class="price">€60</div>
+      <button onclick="selectTicket('Boulogne-sur-Mer', '4 March 2027', 'L’Embarcadère', 60)">
+        Buy Ticket
+      </button>
+    </div>
+
+    <div class="event">
+      <h3>Biarritz</h3>
+      <p>📅 7 April 2027</p>
+      <p>Gare du Midi</p>
+      <div class="price">€50</div>
+      <button onclick="selectTicket('Biarritz', '7 April 2027', 'Gare du Midi', 50)">
+        Buy Ticket
+      </button>
+    </div>
+
+    <div class="event">
+      <h3>Chasseneuil-du-Poitou</h3>
+      <p>📅 20 May 2027</p>
+      <p>Palais des Congrès du Futuroscope</p>
+      <div class="price">€50</div>
+      <button onclick="selectTicket('Chasseneuil-du-Poitou', '20 May 2027', 'Palais des Congrès du Futuroscope', 50)">
+        Buy Ticket
+      </button>
+    </div>
+
+    <div class="event">
+      <h3>Le Grand-Quevilly / Rouen</h3>
+      <p>📅 22 October 2027</p>
+      <p>Zénith</p>
+      <div class="price">€70</div>
+      <button onclick="selectTicket('Le Grand-Quevilly / Rouen', '22 October 2027', 'Zénith', 70)">
+        Buy Ticket
+      </button>
+    </div>
+
+    <div class="event">
+      <h3>Nantes / Saint-Herblain</h3>
+      <p>📅 25 November 2027</p>
+      <p>Zénith Nantes Métropole</p>
+      <div class="price">€70</div>
+      <button onclick="selectTicket('Nantes / Saint-Herblain', '25 November 2027', 'Zénith Nantes Métropole', 70)">
+        Buy Ticket
+      </button>
+    </div>
+
+    <div class="event">
+      <h3>Orléans</h3>
+      <p>📅 27 November 2027</p>
+      <p>Zénith d’Orléans</p>
+      <div class="price">€70</div>
+      <button onclick="selectTicket('Orléans', '27 November 2027', 'Zénith d’Orléans', 70)">
+        Buy Ticket
+      </button>
+    </div>
+
+    <div class="event">
+      <h3>Paris</h3>
+      <p>📅 9 December 2027</p>
+      <p>Accor Arena</p>
+      <div class="price">€50</div>
+      <button onclick="selectTicket('Paris', '9 December 2027', 'Accor Arena', 50)">
+        Buy Ticket
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="container" id="checkout">
+
+  <h2 class="section-title">Ticket Checkout</h2>
+
+  <div id="selectedTicket">
+    Select a concert above to continue.
+  </div>
+
+  <label>Your name</label>
+  <input
+    type="text"
+    id="customerName"
+    placeholder="Enter your full name"
+  >
+
+  <label>Email address</label>
+  <input
+    type="email"
+    id="customerEmail"
+    placeholder="Enter your email"
+  >
+
+  <div class="voucher-box">
+
+    <h3>🎁 Event Gift Voucher</h3>
+
+    <p class="message">
+      Have an event voucher? Enter your voucher code below.
+    </p>
+
+    <input
+      type="text"
+      id="voucherCode"
+      placeholder="Example: CW-XXXX-XXXX"
+    >
+
+    <button onclick="applyVoucher()">
+      Apply Voucher
+    </button>
+
+    <p id="voucherMessage" class="message"></p>
+
+  </div>
+
+  <div class="total">
+    Amount to pay: <span id="totalAmount">€0</span>
+  </div>
+
+  <button onclick="continuePayment()">
+    Continue to Payment
+  </button>
+
+  <p id="paymentMessage" class="message"></p>
+
+</section>
+
+
+<footer>
+  © 2026 Christophe Willem Tickets. All rights reserved.
+</footer>
+
+
+<script>
+
+  let selectedPrice = 0;
+  let selectedConcert = "";
+
+  function selectTicket(city, date, venue, price) {
+
+    selectedPrice = price;
+
+    selectedConcert =
+      city + " — " + date + " — " + venue;
+
+    document.getElementById("checkout").style.display = "block";
+
+    document.getElementById("selectedTicket").innerHTML =
+      "<strong>Selected concert:</strong><br>" +
+      selectedConcert +
+      "<br><br><strong>Ticket price:</strong> €" +
+      price;
+
+    document.getElementById("totalAmount").textContent =
+      "€" + price;
+
+    document.getElementById("voucherMessage").textContent = "";
+
+    document.getElementById("paymentMessage").textContent = "";
+
+    document.getElementById("checkout").scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+
+
+  function applyVoucher() {
+
+    const code =
+      document.getElementById("voucherCode").value.trim();
+
+    const message =
+      document.getElementById("voucherMessage");
+
+    if (!code) {
+
+      message.textContent =
+        "Please enter a voucher code.";
+
+      return;
+    }
+
+    /*
+      DEMO ONLY
+
+      Real voucher balances must be checked
+      on a secure server/database.
+
+      This example accepts a demo voucher
+      with a €50 balance.
+    */
+
+    if (code === "CW-DEMO-50") {
+
+      const remaining =
+        Math.max(0, selectedPrice - 50);
+
+      document.getElementById("totalAmount").textContent =
+        "€" + remaining;
+
+      message.textContent =
+        "Voucher accepted. €50 has been applied.";
+
+    } else {
+
+      message.textContent =
+        "Voucher not recognized. Please check your code.";
+
+    }
+  }
+
+
+  function continuePayment() {
+
+    const name =
+      document.getElementById("customerName").value.trim();
+
+    const email =
+      document.getElementById("customerEmail").value.trim();
+
+    const message =
+      document.getElementById("paymentMessage");
+
+    if (!selectedPrice) {
+
+      message.textContent =
+        "Please select a concert first.";
+
+      return;
+    }
+
+    if (!name) {
+
+      message.textContent =
+        "Please enter your name.";
+
+      return;
+    }
+
+    if (!email) {
+
+      message.textContent =
+        "Please enter your email address.";
+
+      return;
+    }
+
+    /*
+      REAL PAYMENT PROCESSING WILL BE
+      CONNECTED HERE LATER.
+
+      Never put a payment provider's
+      secret key inside this HTML file.
+    */
+
+    message.textContent =
+      "Checkout information received. Real payment processing will be connected in the next step.";
+  }
+
+</script>
+
+</body>
+</html>
