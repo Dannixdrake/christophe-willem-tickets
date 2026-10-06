@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Live Events | Tickets</title>
+<title>Live Events — Tickets</title>
 
 <style>
 * {
@@ -12,316 +12,163 @@
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #09090d;
+  font-family: Arial, sans-serif;
+  background: #090909;
   color: #fff;
 }
 
 header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: rgba(9,9,13,.95);
-  border-bottom: 1px solid #25252d;
-  padding: 18px 6%;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #222;
 }
 
-.nav {
-  max-width: 1150px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo {
-  font-size: 23px;
-  font-weight: 800;
-}
-
-nav a {
-  color: #bbb;
-  text-decoration: none;
-  margin-left: 22px;
-  font-size: 14px;
-}
-
-nav a:hover {
-  color: #fff;
+header h1 {
+  margin: 0;
+  font-size: 26px;
 }
 
 .hero {
   text-align: center;
-  padding: 75px 20px 55px;
-  background:
-    radial-gradient(circle at center, #272733 0, #09090d 65%);
+  padding: 55px 20px;
 }
 
-.hero h1 {
-  font-size: clamp(38px, 7vw, 70px);
-  margin: 0 0 15px;
+.hero h2 {
+  font-size: 38px;
+  margin-bottom: 12px;
 }
 
 .hero p {
   color: #aaa;
-  max-width: 600px;
-  margin: auto;
-  line-height: 1.6;
-}
-
-.container {
-  width: 92%;
-  max-width: 1100px;
-  margin: 45px auto;
-}
-
-.section-title {
-  margin-bottom: 22px;
 }
 
 .events {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 18px;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
 }
 
-.event-card {
-  background: #14141b;
-  border: 1px solid #292932;
-  border-radius: 16px;
-  padding: 23px;
-  transition: .2s;
+.event {
+  background: #111;
+  border: 1px solid #292929;
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 16px;
 }
 
-.event-card:hover {
-  transform: translateY(-3px);
-  border-color: #444450;
+.event h3 {
+  margin-top: 0;
 }
 
-.event-card h3 {
-  margin: 0 0 10px;
-  font-size: 21px;
-}
-
-.event-info {
+.event p {
   color: #aaa;
-  line-height: 1.7;
-  font-size: 14px;
-}
-
-.price {
-  font-size: 23px;
-  font-weight: bold;
-  margin: 18px 0;
 }
 
 button {
-  cursor: pointer;
-  border: 0;
-  border-radius: 9px;
-  padding: 13px 18px;
-  font-weight: 700;
-}
-
-.buy {
-  width: 100%;
   background: #fff;
   color: #000;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-.buy:hover {
-  background: #ddd;
+button:hover {
+  opacity: .85;
 }
 
-.checkout {
+#checkout {
   display: none;
-  background: #14141b;
-  border: 1px solid #292932;
-  border-radius: 16px;
-  padding: 28px;
-  margin-top: 45px;
-}
-
-.selected {
-  background: #0e0e14;
-  border-radius: 10px;
-  padding: 17px;
-  margin-bottom: 22px;
-  line-height: 1.7;
-}
-
-label {
-  display: block;
-  margin-top: 15px;
-  margin-bottom: 7px;
-  color: #ccc;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #111;
+  border: 1px solid #292929;
+  border-radius: 14px;
 }
 
 input {
   width: 100%;
-  padding: 14px;
-  background: #0c0c11;
-  border: 1px solid #353540;
-  color: #fff;
-  border-radius: 9px;
-  outline: none;
+  padding: 13px;
+  margin: 8px 0 15px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #181818;
+  color: white;
 }
 
-input:focus {
-  border-color: #777;
-}
-
-.voucher {
-  margin-top: 25px;
-  padding: 20px;
-  background: #0e0e14;
-  border-radius: 12px;
-}
-
-.voucher h3 {
-  margin-top: 0;
-}
-
-.voucher-row {
-  display: flex;
-  gap: 10px;
-}
-
-.voucher-row input {
-  flex: 1;
-}
-
-.apply {
-  background: #fff;
-  color: #000;
-  white-space: nowrap;
+.voucher-box {
+  margin-top: 20px;
+  padding: 18px;
+  background: #151515;
+  border-radius: 10px;
 }
 
 .message {
-  margin-top: 12px;
+  margin-top: 10px;
   font-size: 14px;
 }
 
-.total {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 25px 0;
-}
-
-.payment {
-  width: 100%;
-  background: #fff;
-  color: #000;
-}
-
-footer {
-  text-align: center;
-  padding: 45px 20px;
-  color: #777;
-  border-top: 1px solid #22222a;
-  margin-top: 60px;
-}
-
-/* ADMIN */
-
-.admin-button {
-  display: block;
-  margin: 35px auto;
-  background: #202027;
-  color: #aaa;
-  border: 1px solid #34343e;
-}
-
-.admin-panel {
+#adminPanel {
   display: none;
-  border-top: 1px solid #292932;
-  padding: 45px 0;
-  background: #0d0d12;
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  margin: 25px 0;
-}
-
-.stat {
-  background: #17171e;
-  border: 1px solid #292932;
-  border-radius: 12px;
-  padding: 20px;
-}
-
-.stat strong {
-  display: block;
-  color: #999;
-  margin-bottom: 8px;
-}
-
-.stat span {
-  font-size: 25px;
-  font-weight: bold;
-}
-
-.search {
-  margin-bottom: 20px;
-}
-
-.table-container {
-  overflow-x: auto;
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 25px;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 14px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 700px;
+  margin-top: 20px;
 }
 
-th,
-td {
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #292929;
   text-align: left;
-  padding: 13px;
-  border-bottom: 1px solid #292932;
-}
-
-th {
-  background: #191920;
 }
 
 .status-used {
   color: #ff7777;
-  font-weight: bold;
 }
 
 .status-unused {
-  color: #72e39a;
-  font-weight: bold;
+  color: #7dff9a;
 }
 
-.reset {
-  margin-top: 20px;
-  background: #302020;
-  color: #ffaaaa;
+.admin-login {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.92);
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
 }
 
-@media (max-width: 600px) {
+.login-box {
+  width: 90%;
+  max-width: 400px;
+  background: #111;
+  border: 1px solid #333;
+  padding: 25px;
+  border-radius: 14px;
+}
 
-  nav {
-    display: none;
-  }
+footer {
+  text-align: center;
+  padding: 35px 15px;
+  color: #777;
+  cursor: pointer;
+  font-size: 13px;
+}
 
-  .voucher-row {
-    flex-direction: column;
-  }
-
-  .stats {
-    grid-template-columns: 1fr;
-  }
-
-  .checkout {
-    padding: 20px;
-  }
+footer:hover {
+  color: #fff;
 }
 </style>
 </head>
@@ -329,371 +176,292 @@ th {
 <body>
 
 <header>
-  <div class="nav">
-    <div class="logo">Live Events</div>
-
-    <nav>
-      <a href="#events">Events</a>
-      <a href="#checkout">Tickets</a>
-    </nav>
-  </div>
+  <h1>Live Events</h1>
 </header>
 
 <section class="hero">
-  <h1>Live Events</h1>
-  <p>
-    Discover upcoming live performances and reserve your tickets securely.
-  </p>
+  <h2>Upcoming Events</h2>
+  <p>Choose your event and reserve your ticket.</p>
 </section>
 
-<div class="container" id="events">
+<section class="events">
 
-  <h2 class="section-title">Upcoming Events</h2>
+  <div class="event">
+    <h3>Paris Live Experience</h3>
+    <p>12 March 2027 · Grand Arena</p>
+    <p>€60</p>
+    <button onclick="selectTicket('Paris Live Experience', '12 March 2027', 'Grand Arena', 60)">
+      Buy Ticket
+    </button>
+  </div>
 
-  <div class="events">
+  <div class="event">
+    <h3>Lyon Live Experience</h3>
+    <p>20 March 2027 · City Hall</p>
+    <p>€50</p>
+    <button onclick="selectTicket('Lyon Live Experience', '20 March 2027', 'City Hall', 50)">
+      Buy Ticket
+    </button>
+  </div>
 
-    <div class="event-card">
-      <h3>Forges-les-Eaux</h3>
-      <div class="event-info">
-        27 February 2027<br>
-        L'Espace de Forges
-      </div>
-      <div class="price">€60</div>
-      <button class="buy"
-        onclick="selectEvent('Forges-les-Eaux','27 February 2027','L’Espace de Forges',60,'forges')">
-        Buy Ticket
-      </button>
-    </div>
+  <div class="event">
+    <h3>Nantes Live Experience</h3>
+    <p>28 March 2027 · Zenith Hall</p>
+    <p>€70</p>
+    <button onclick="selectTicket('Nantes Live Experience', '28 March 2027', 'Zenith Hall', 70)">
+      Buy Ticket
+    </button>
+  </div>
 
-    <div class="event-card">
-      <h3>Boulogne-sur-Mer</h3>
-      <div class="event-info">
-        4 March 2027<br>
-        L'Embarcadère
-      </div>
-      <div class="price">€60</div>
-      <button class="buy"
-        onclick="selectEvent('Boulogne-sur-Mer','4 March 2027','L’Embarcadère',60,'boulogne')">
-        Buy Ticket
-      </button>
-    </div>
+</section>
 
-    <div class="event-card">
-      <h3>Biarritz</h3>
-      <div class="event-info">
-        7 April 2027<br>
-        Gare du Midi
-      </div>
-      <div class="price">€50</div>
-      <button class="buy"
-        onclick="selectEvent('Biarritz','7 April 2027','Gare du Midi',50,'biarritz')">
-        Buy Ticket
-      </button>
-    </div>
+<section id="checkout">
 
-    <div class="event-card">
-      <h3>Chasseneuil-du-Poitou</h3>
-      <div class="event-info">
-        20 May 2027<br>
-        Palais des Congrès
-      </div>
-      <div class="price">€50</div>
-      <button class="buy"
-        onclick="selectEvent('Chasseneuil-du-Poitou','20 May 2027','Palais des Congrès',50,'chasseneuil')">
-        Buy Ticket
-      </button>
-    </div>
+  <h2>Checkout</h2>
 
-    <div class="event-card">
-      <h3>Le Grand-Quevilly</h3>
-      <div class="event-info">
-        22 October 2027<br>
-        Zénith
-      </div>
-      <div class="price">€70</div>
-      <button class="buy"
-        onclick="selectEvent('Le Grand-Quevilly','22 October 2027','Zénith',70,'rouen')">
-        Buy Ticket
-      </button>
-    </div>
+  <div id="selectedTicket"></div>
 
-    <div class="event-card">
-      <h3>Nantes</h3>
-      <div class="event-info">
-        25 November 2027<br>
-        Zénith Nantes Métropole
-      </div>
-      <div class="price">€70</div>
-      <button class="buy"
-        onclick="selectEvent('Nantes','25 November 2027','Zénith Nantes Métropole',70,'nantes')">
-        Buy Ticket
-      </button>
-    </div>
+  <br>
 
-    <div class="event-card">
-      <h3>Orléans</h3>
-      <div class="event-info">
-        27 November 2027<br>
-        Zénith d'Orléans
-      </div>
-      <div class="price">€70</div>
-      <button class="buy"
-        onclick="selectEvent('Orléans','27 November 2027','Zénith d’Orléans',70,'orleans')">
-        Buy Ticket
-      </button>
-    </div>
+  <label>Name</label>
+  <input id="customerName" type="text" placeholder="Your name">
 
-    <div class="event-card">
-      <h3>Paris</h3>
-      <div class="event-info">
-        9 December 2027<br>
-        Accor Arena
-      </div>
-      <div class="price">€50</div>
-      <button class="buy"
-        onclick="selectEvent('Paris','9 December 2027','Accor Arena',50,'paris')">
-        Buy Ticket
-      </button>
-    </div>
+  <label>Email</label>
+  <input id="customerEmail" type="email" placeholder="Your email">
+
+  <div class="voucher-box">
+
+    <strong>Event Gift Voucher</strong>
+
+    <input
+      id="voucherCode"
+      type="text"
+      placeholder="Enter voucher code"
+    >
+
+    <button onclick="applyVoucher()">Apply Voucher</button>
+
+    <div id="voucherMessage" class="message"></div>
 
   </div>
 
+  <h3>
+    Total:
+    <span id="totalAmount">€0</span>
+  </h3>
 
-  <section class="checkout" id="checkout">
+  <button onclick="continuePayment()">
+    Continue to Payment
+  </button>
 
-    <h2>Complete Your Booking</h2>
+  <div id="paymentMessage" class="message"></div>
 
-    <div class="selected" id="selectedEvent"></div>
+</section>
 
-    <label>Full Name</label>
-    <input id="customerName" type="text"
-      placeholder="Enter your full name">
 
-    <label>Email Address</label>
-    <input id="customerEmail" type="email"
-      placeholder="Enter your email address">
+<!-- SECRET ADMIN LOGIN -->
 
-    <div class="voucher">
+<div class="admin-login" id="adminLogin">
 
-      <h3>Gift Voucher</h3>
+  <div class="login-box">
 
-      <div class="voucher-row">
+    <h2>Private Access</h2>
 
-        <input
-          id="voucherCode"
-          type="text"
-          placeholder="Enter your voucher code">
+    <p>Enter your access number.</p>
 
-        <button class="apply" onclick="applyVoucher()">
-          Apply
-        </button>
+    <input
+      id="adminPassword"
+      type="password"
+      inputmode="numeric"
+      maxlength="11"
+      placeholder="11-digit number"
+    >
 
-      </div>
-
-      <div class="message" id="voucherMessage"></div>
-
-    </div>
-
-    <div class="total">
-      Total: <span id="totalAmount">€0</span>
-    </div>
-
-    <button class="payment" onclick="continuePayment()">
-      Continue to Payment
+    <button onclick="checkAdminPassword()">
+      Continue
     </button>
 
-    <div class="message" id="paymentMessage"></div>
+    <button
+      onclick="closeAdminLogin()"
+      style="margin-left:8px;background:#222;color:#fff;"
+    >
+      Cancel
+    </button>
 
-  </section>
+    <div id="adminLoginMessage" class="message"></div>
+
+  </div>
 
 </div>
 
 
-<button class="admin-button" onclick="toggleAdmin()">
-  Voucher Status
-</button>
+<!-- ADMIN PANEL -->
 
+<section id="adminPanel">
 
-<section class="admin-panel" id="adminPanel">
+  <h2>Voucher Status</h2>
 
-  <div class="container">
+  <p>
+    Voucher management
+  </p>
 
-    <h2>Voucher Management</h2>
+  <button onclick="refreshAdminTable()">
+    Refresh
+  </button>
 
-    <div class="stats">
+  <button
+    onclick="logoutAdmin()"
+    style="background:#222;color:#fff;margin-left:8px;"
+  >
+    Close
+  </button>
 
-      <div class="stat">
-        <strong>Total Vouchers</strong>
-        <span id="totalCount">400</span>
-      </div>
+  <table>
 
-      <div class="stat">
-        <strong>Used</strong>
-        <span id="usedCount">0</span>
-      </div>
+    <thead>
+      <tr>
+        <th>Voucher</th>
+        <th>Event</th>
+        <th>Discount</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
 
-      <div class="stat">
-        <strong>Unused</strong>
-        <span id="unusedCount">400</span>
-      </div>
+    <tbody id="voucherTable"></tbody>
 
-    </div>
-
-    <input
-      class="search"
-      id="searchVoucher"
-      type="text"
-      placeholder="Search voucher or event..."
-      oninput="renderTable()">
-
-    <div class="table-container">
-
-      <table>
-
-        <thead>
-          <tr>
-            <th>Voucher Code</th>
-            <th>Event</th>
-            <th>Date</th>
-            <th>Discount</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-
-        <tbody id="voucherTable"></tbody>
-
-      </table>
-
-    </div>
-
-    <button class="reset" onclick="resetVouchers()">
-      Reset Voucher Status
-    </button>
-
-  </div>
+  </table>
 
 </section>
 
 
-<footer>
-  © 2027 Live Events. All rights reserved.
+<footer onclick="openAdminLogin()">
+  Copyright © 2026
 </footer>
 
 
 <script>
 
-const events = [
-  ["forges","Forges-les-Eaux","27 February 2027"],
-  ["boulogne","Boulogne-sur-Mer","4 March 2027"],
-  ["biarritz","Biarritz","7 April 2027"],
-  ["chasseneuil","Chasseneuil-du-Poitou","20 May 2027"],
-  ["rouen","Le Grand-Quevilly","22 October 2027"],
-  ["nantes","Nantes","25 November 2027"],
-  ["orleans","Orléans","27 November 2027"],
-  ["paris","Paris","9 December 2027"]
+/*
+  PRIVATE ACCESS NUMBER
+
+  Replace this with your own 11-digit number
+  for your authorized event.
+*/
+const ADMIN_ACCESS_NUMBER = "12345678901";
+
+
+let selectedPrice = 0;
+let selectedConcert = "";
+let appliedVoucher = null;
+
+
+/*
+  SAMPLE VOUCHERS
+
+  These are fictional sample vouchers.
+  You can expand this structure for an authorized event.
+*/
+
+const vouchers = [
+  {
+    code: "VCH-PARIS-001",
+    event: "Paris Live Experience",
+    discount: 60,
+    used: false
+  },
+
+  {
+    code: "VCH-PARIS-002",
+    event: "Paris Live Experience",
+    discount: 60,
+    used: false
+  },
+
+  {
+    code: "VCH-LYON-001",
+    event: "Lyon Live Experience",
+    discount: 50,
+    used: false
+  },
+
+  {
+    code: "VCH-NANTES-001",
+    event: "Nantes Live Experience",
+    discount: 70,
+    used: false
+  }
 ];
 
-let vouchers = [];
-let selectedPrice = 0;
-let selectedEventId = "";
+
+/*
+  LOAD SAVED STATUS
+*/
+
+const savedStatus =
+  JSON.parse(localStorage.getItem("voucherStatus") || "{}");
+
+vouchers.forEach(voucher => {
+
+  if (savedStatus[voucher.code] === true) {
+    voucher.used = true;
+  }
+
+});
 
 
-/* CREATE VOUCHERS */
+function saveVoucherStatus() {
 
-function createVouchers() {
+  const status = {};
 
-  vouchers = [];
-
-  events.forEach(event => {
-
-    for (let i = 1; i <= 50; i++) {
-
-      vouchers.push({
-        code:
-          "VCH-" +
-          event[0].toUpperCase() +
-          "-" +
-          String(i).padStart(2,"0"),
-
-        eventId: event[0],
-        event: event[1],
-        date: event[2],
-        discount: 100
-      });
-
-    }
-
+  vouchers.forEach(voucher => {
+    status[voucher.code] = voucher.used;
   });
 
-}
-
-
-/* STORAGE */
-
-function getUsed() {
-
-  return JSON.parse(
-    localStorage.getItem("usedVouchers") || "[]"
-  );
-
-}
-
-function saveUsed(list) {
-
   localStorage.setItem(
-    "usedVouchers",
-    JSON.stringify(list)
+    "voucherStatus",
+    JSON.stringify(status)
   );
-
 }
 
 
-/* SELECT EVENT */
+/*
+  SELECT TICKET
+*/
 
-function selectEvent(
-  name,
-  date,
-  venue,
-  price,
-  id
-) {
+function selectTicket(city, date, venue, price) {
 
   selectedPrice = price;
-  selectedEventId = id;
 
-  document.getElementById("checkout").style.display =
-    "block";
+  selectedConcert =
+    city + " — " + date + " — " + venue;
 
-  document.getElementById("selectedEvent").innerHTML =
-    "<strong>Selected event</strong><br>" +
-    name +
-    "<br>" +
-    date +
-    "<br>" +
-    venue +
-    "<br><br>Ticket price: €" +
+  appliedVoucher = null;
+
+  document.getElementById("checkout").style.display = "block";
+
+  document.getElementById("selectedTicket").innerHTML =
+    "<strong>Selected event:</strong><br>" +
+    selectedConcert +
+    "<br><br><strong>Ticket price:</strong> €" +
     price;
 
-  document.getElementById("totalAmount")
-    .textContent = "€" + price;
+  document.getElementById("totalAmount").textContent =
+    "€" + price;
 
   document.getElementById("voucherCode").value = "";
 
-  document.getElementById("voucherMessage")
-    .textContent = "";
+  document.getElementById("voucherMessage").textContent = "";
 
-  document.getElementById("paymentMessage")
-    .textContent = "";
-
-  document.getElementById("checkout")
-    .scrollIntoView({
-      behavior: "smooth"
-    });
-
+  document.getElementById("checkout").scrollIntoView({
+    behavior: "smooth"
+  });
 }
 
 
-/* APPLY VOUCHER */
+/*
+  APPLY VOUCHER
+*/
 
 function applyVoucher() {
 
@@ -706,22 +474,12 @@ function applyVoucher() {
   const message =
     document.getElementById("voucherMessage");
 
-  if (!selectedPrice) {
-
-    message.textContent =
-      "Please select an event first.";
-
-    return;
-
-  }
-
   if (!code) {
 
     message.textContent =
       "Please enter a voucher code.";
 
     return;
-
   }
 
   const voucher =
@@ -733,44 +491,44 @@ function applyVoucher() {
       "Voucher not recognized.";
 
     return;
-
   }
 
-  if (voucher.eventId !== selectedEventId) {
-
-    message.textContent =
-      "This voucher is associated with another event.";
-
-    return;
-
-  }
-
-  const used = getUsed();
-
-  if (used.includes(code)) {
+  if (voucher.used) {
 
     message.textContent =
       "This voucher has already been used.";
 
     return;
-
   }
 
-  used.push(code);
-  saveUsed(used);
+  if (!selectedConcert.includes(voucher.event)) {
+
+    message.textContent =
+      "This voucher is valid for a different event.";
+
+    return;
+  }
+
+  appliedVoucher = voucher;
+
+  const newTotal =
+    Math.max(0, selectedPrice - voucher.discount);
 
   document.getElementById("totalAmount")
-    .textContent = "€0";
+    .textContent = "€" + newTotal;
 
   message.textContent =
-    "Voucher accepted. Discount applied.";
-
-  renderTable();
-
+    "Voucher accepted.";
 }
 
 
-/* PAYMENT */
+/*
+  CONTINUE PAYMENT
+
+  For a real authorized event, voucher redemption
+  should be confirmed by your actual ticketing/payment
+  system before permanently marking the voucher used.
+*/
 
 function continuePayment() {
 
@@ -785,13 +543,20 @@ function continuePayment() {
   const message =
     document.getElementById("paymentMessage");
 
+  if (!selectedPrice) {
+
+    message.textContent =
+      "Please select an event first.";
+
+    return;
+  }
+
   if (!name) {
 
     message.textContent =
       "Please enter your name.";
 
     return;
-
   }
 
   if (!email) {
@@ -800,133 +565,187 @@ function continuePayment() {
       "Please enter your email.";
 
     return;
+  }
+
+  if (appliedVoucher) {
+
+    appliedVoucher.used = true;
+
+    saveVoucherStatus();
 
   }
 
   message.textContent =
-    "Your booking information has been received.";
+    "Checkout information received.";
 
 }
 
 
-/* ADMIN */
+/*
+  OPEN SECRET ADMIN LOGIN
+*/
 
-function toggleAdmin() {
+function openAdminLogin() {
 
-  const panel =
-    document.getElementById("adminPanel");
+  document.getElementById("adminLogin").style.display =
+    "flex";
 
-  panel.style.display =
-    panel.style.display === "block"
-      ? "none"
-      : "block";
+  document.getElementById("adminPassword").value = "";
 
-  if (panel.style.display === "block") {
+  document.getElementById("adminLoginMessage")
+    .textContent = "";
 
-    renderTable();
+}
 
-    panel.scrollIntoView({
+
+/*
+  CLOSE LOGIN
+*/
+
+function closeAdminLogin() {
+
+  document.getElementById("adminLogin").style.display =
+    "none";
+
+}
+
+
+/*
+  CHECK 11-DIGIT ACCESS NUMBER
+*/
+
+function checkAdminPassword() {
+
+  const entered =
+    document.getElementById("adminPassword")
+      .value.trim();
+
+  const message =
+    document.getElementById("adminLoginMessage");
+
+  if (!/^\d{11}$/.test(entered)) {
+
+    message.textContent =
+      "Please enter an 11-digit number.";
+
+    return;
+  }
+
+  if (entered !== ADMIN_ACCESS_NUMBER) {
+
+    message.textContent =
+      "Access denied.";
+
+    return;
+  }
+
+  document.getElementById("adminLogin").style.display =
+    "none";
+
+  document.getElementById("adminPanel").style.display =
+    "block";
+
+  refreshAdminTable();
+
+  document.getElementById("adminPanel")
+    .scrollIntoView({
       behavior: "smooth"
     });
 
-  }
-
 }
 
 
-/* TABLE */
+/*
+  ADMIN TABLE
+*/
 
-function renderTable() {
+function refreshAdminTable() {
 
   const table =
     document.getElementById("voucherTable");
 
-  const search =
-    document.getElementById("searchVoucher")
-      .value
-      .toUpperCase();
+  table.innerHTML = "";
 
-  const used = getUsed();
+  vouchers.forEach((voucher, index) => {
 
-  let html = "";
+    const row =
+      document.createElement("tr");
 
-  vouchers.forEach(voucher => {
+    row.innerHTML = `
 
-    const status =
-      used.includes(voucher.code)
-        ? "USED"
-        : "UNUSED";
+      <td>${voucher.code}</td>
 
-    const searchable =
-      (
-        voucher.code +
-        voucher.event +
-        voucher.date
-      ).toUpperCase();
+      <td>${voucher.event}</td>
 
-    if (
-      search &&
-      !searchable.includes(search)
-    ) return;
+      <td>€${voucher.discount}</td>
 
-    html += `
-      <tr>
-        <td>${voucher.code}</td>
-        <td>${voucher.event}</td>
-        <td>${voucher.date}</td>
-        <td>100%</td>
-        <td class="${
-          status === "USED"
-            ? "status-used"
-            : "status-unused"
-        }">
-          ${status}
-        </td>
-      </tr>
+      <td class="${
+        voucher.used
+          ? "status-used"
+          : "status-unused"
+      }">
+
+        ${voucher.used ? "Used" : "Unused"}
+
+      </td>
+
+      <td>
+
+        <button
+          onclick="toggleVoucher(${index})"
+          style="background:#222;color:#fff;"
+        >
+
+          ${voucher.used
+            ? "Mark Unused"
+            : "Mark Used"}
+
+        </button>
+
+      </td>
+
     `;
+
+    table.appendChild(row);
 
   });
 
-  table.innerHTML = html;
+}
 
-  document.getElementById("totalCount")
-    .textContent = vouchers.length;
 
-  document.getElementById("usedCount")
-    .textContent = used.length;
+/*
+  CHANGE VOUCHER STATUS
+*/
 
-  document.getElementById("unusedCount")
-    .textContent =
-      vouchers.length - used.length;
+function toggleVoucher(index) {
+
+  vouchers[index].used =
+    !vouchers[index].used;
+
+  saveVoucherStatus();
+
+  refreshAdminTable();
 
 }
 
 
-/* RESET */
+/*
+  CLOSE ADMIN PANEL
+*/
 
-function resetVouchers() {
+function logoutAdmin() {
 
-  if (
-    !confirm(
-      "Reset all voucher statuses?"
-    )
-  ) return;
+  document.getElementById("adminPanel").style.display =
+    "none";
 
-  localStorage.removeItem(
-    "usedVouchers"
-  );
-
-  renderTable();
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 
 }
-
-
-/* START */
-
-createVouchers();
-renderTable();
 
 </script>
 
 </body>
-  </html>
+</html>
